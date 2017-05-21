@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/vendors/bootstrap/dist/css/bootstrap.min.css">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+
+        <div ui-view></div>
+
+        <script src="/vendors/jquery/dist/jquery.min.js"></script>
+        <script src="/vendors/tether/dist/js/tether.min.js"></script>
+        <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/vendors/angular/angular.min.js"></script>
+        <script src="/vendors/angular-cookies/angular-cookies.min.js"></script>
+        <script src="/vendors/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+        <script src="/javascripts/app.js"></script>
+        <script src="/javascripts/constant.js"></script>
+        <script src="/javascripts/services/auth.service.js"></script>
+        <script src="/javascripts/services/data.service.js"></script>
+        <script src="/javascripts/modules/login/login.directive.js"></script>
+        <script src="/javascripts/modules/login/login.service.js"></script>
+        <script src="/javascripts/modules/home/home.directive.js"></script>
+        <!--<script src="/javascripts/modules/home/home.service.js"></script>-->
+        <script src="/javascripts/modules/dashboard/dashboard.directive.js"></script>
+    </body>
+</html>
