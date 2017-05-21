@@ -9,6 +9,10 @@ class Error {
     InvalidToken () {
         return { message : 'Invalid Token' , status : 403 }
     }
+
+    MissingParams () {
+        return { message : 'Missings Params' , status : 404 }
+    }
 }
 
 module.exports = Error;

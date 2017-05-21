@@ -8,6 +8,7 @@ const Auth = require('../controllers/auth')
 router.post('/login', login);
 router.get('/showdbs', Auth, database.getAllDatabases);
 router.get('/showtables/:dbname', Auth, database.getAllTables);
+router.get('/table/:table', Auth, database.getTable);
 router.get('/', (req, res, next) => {
     res.render('index', {
         title : 'Node my admin'

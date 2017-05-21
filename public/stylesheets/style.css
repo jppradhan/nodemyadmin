@@ -26,3 +26,13 @@ body {
 .bg-faded {
     background-color: #f7f7f7;
 }
+
+.select-database {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: calc(100% - 10px);
+}
+.table-col {
+    max-height: calc(100% - 100px);
+    overflow-y: auto;
+}

@@ -1,3 +1,4 @@
-<div class="container-fluid">
-    <h1>Todo Dashboard</h1>
+<div class="container-fluid" ng-if="homeLoaded">
+    <h3 ng-bind="vm.tableName">Todo Dashboard</h3>
+    <table-dir></table-dir>
 </div>

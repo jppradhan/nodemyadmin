@@ -1,9 +1,9 @@
 angular.module('app')
     .directive('home', home)
 
-login.$inject = ['Env'];
+login.$inject = ['Env', 'sharedVar'];
 
-function home (Env) {
+function home (Env, sharedVar) {
     var directive = {
         restrict: 'EA',
         link : link,
@@ -16,29 +16,51 @@ function home (Env) {
     return directive;
 
     function link (scope, element, attrs) {
-        scope.selectedDB = 0;
+        scope.selectedTable = 0;
+        sharedVar.tableName = '';
 
-        scope.selectDatabase = function (index) {
-            scope.selectedDB = index;
+        scope.selectTable = function (index) {
+            scope.selectedTable = index;
+            sharedVar.tableName = scope.vm.tables[scope.selectedTable];
+            sharedVar.loadTable();
+        }
+        
+        scope.selectDatabase = function (event, context) {
+            scope.vm.getTables(scope.vm.selectedDB);
         }
     }
 }
 
-HomeController.$inject = ['$scope', 'Auth', 'dataService']
+HomeController.$inject = ['$scope', 'Auth', 'dataService', 'sharedVar']
 
-function HomeController ($scope, Auth, DataService) {
+function HomeController ($scope, Auth, DataService, sharedVar) {
     var vm = this;
 
     vm.$onInit = init;
+    vm.selectedDB = '';
     
     function init () {
-        getDataBases();
+        vm.getDataBases();
+    }
+
+    vm.getTables = function (database) {
+        return DataService.getTables(database)
+            .then(function (res) {
+                vm.tables = res.data.data;
+                sharedVar.tableName = vm.tables[0];
+                $scope.homeLoaded = true;
+            })
     }
     
-    function getDataBases () {
+    vm.getDataBases = function () {
+        $scope.homeLoaded = false;
         return DataService.getDatabase()
             .then(function (res) {
                 vm.databases = res.data.data;
+                vm.selectedDB = vm.databases[0]
+            })
+            .then(function () {
+                vm.getTables(vm.selectedDB);
             })
     }
 }

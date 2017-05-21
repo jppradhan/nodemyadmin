@@ -11,9 +11,14 @@
 <div class="container-fluid">
     <div class="row">
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item" ng-repeat="database in vm.databases">
-                    <a href="" class="nav-link" ng-bind="database" ng-click="selectDatabase($index)" ng-class="{'active' : (selectedDB == $index)}"></a>
+            <h6 class="text-center">Databases : </h6>
+            <select class="form-control select-database" ng-model="vm.selectedDB" ng-change="selectDatabase($event, this)">
+                <option value="{{database}}" ng-repeat="database in vm.databases">{{::database}}</option>
+            </select>
+            <h6 class="text-center">Tables : </h6>
+            <ul class="nav nav-pills flex-column table-col">
+                <li class="nav-item" ng-repeat="table in vm.tables">
+                    <a href="" class="nav-link" ng-bind="table" ng-click="selectTable($index)" ng-class="{'active' : (selectedTable == $index)}"></a>
                 </li>
             </ul>
         </nav>

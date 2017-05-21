@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <table class="table">
+        <thead class="thead-inverse">
+            <tr>
+                <th ng-repeat="header in vm.headers" ng-bind="header">
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in vm.rows">
+                <td ng-repeat="(key, value) in row" ng-bind="value"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

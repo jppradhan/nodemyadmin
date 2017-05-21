@@ -33,6 +33,18 @@ class DatabaseModel {
                 return data
             })
     }
+
+    static getTable (table) {
+        const connect = connection.get()
+        const query = `select * from ${table}`
+
+        return connect.query(query)
+            .then((rows) => {
+                let tableHeaders = Object.keys(rows[0])
+                let data = {'data' : rows, 'table_headers' : tableHeaders }
+                return data
+            })
+    }
 }
 
 module.exports = DatabaseModel
