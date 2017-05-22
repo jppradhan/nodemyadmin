@@ -7,6 +7,10 @@ class DatabaseModel {
         return connect.query(query)
             .then((rows) => {
 
+                if(rows.length === 0) {
+                    return []
+                }
+
                 let dbs = [];
                 for(let row = 0; row < rows.length; row++) {
                     dbs.push(rows[row]['Database'])
@@ -25,6 +29,10 @@ class DatabaseModel {
             })
             .then((rows) => {
 
+                if(rows.length === 0) {
+                    return []
+                }
+
                 let tables = [];
                 for(let row = 0; row < rows.length; row++) {
                     tables.push(rows[row][`Tables_in_${databaseName}`])
@@ -40,9 +48,14 @@ class DatabaseModel {
 
         return connect.query(query)
             .then((rows) => {
+                if(rows.length === 0) {
+                    return []
+                }
                 let tableHeaders = Object.keys(rows[0])
                 let data = {'data' : rows, 'table_headers' : tableHeaders }
+
                 return data
+
             })
     }
 }

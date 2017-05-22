@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <table class="table">
+    <table class="table table-bordered">
         <thead class="thead-inverse">
             <tr>
                 <th ng-repeat="header in vm.headers" ng-bind="header">
@@ -9,7 +9,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="row in vm.rows">
-                <td ng-repeat="(key, value) in row" ng-bind="value"></td>
+                <td ng-repeat="(key, value) in row" ng-bind="value | json"></td>
             </tr>
         </tbody>
     </table>

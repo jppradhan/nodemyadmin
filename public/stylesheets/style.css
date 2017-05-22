@@ -33,6 +33,25 @@ body {
     width: calc(100% - 10px);
 }
 .table-col {
-    max-height: calc(100% - 100px);
+    max-height: calc(100% - 110px);
     overflow-y: auto;
+}
+
+.dashboard .container-fluid {
+    overflow-x: auto;
+}
+.table-bordered thead td,
+.table-bordered thead th {
+    font-size: 0.7rem;
+}
+
+.table-bordered td,
+.table-bordered th {
+    font-size: 0.5rem;
+}
+.table-col {
+    font-size: 0.6rem;
+}
+.h6, h6 {
+    font-size: 0.8rem;
 }
