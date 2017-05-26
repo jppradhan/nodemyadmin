@@ -1,4 +1,5 @@
 const connection = require('./connection')
+const queryBuilder = require('sql-query').Query()
 
 class DatabaseModel {
     static getAllDatabases () {
@@ -55,6 +56,43 @@ class DatabaseModel {
                 let data = {'data' : rows, 'table_headers' : tableHeaders }
 
                 return data
+
+            })
+    }
+
+    static createDatabase (name) {
+        const connect = connection.get()
+        const query = `CREATE DATABASE IF NOT EXISTS ${name}`
+
+        return connect.query(query)
+            .then(() => {
+                return {
+                    status : 200,
+                    message : `Database ${name} created`,
+                    code : 'databaseTable'
+                }
+            })
+    }
+
+    static createTable (name, fields) {
+        const connect = connection.get()
+        let query = queryBuilder.create()
+            .table(name)
+            .fields(fields)
+            .build()
+        query = query.replace(/'/g, '`')
+
+        return connect.query(query)
+            .then((rows) => {
+                if(rows.length === 0) {
+                    return []
+                }
+
+                return {
+                    status : 200,
+                    message : `Table ${name} created`,
+                    code : 'createTable'
+                }
 
             })
     }
