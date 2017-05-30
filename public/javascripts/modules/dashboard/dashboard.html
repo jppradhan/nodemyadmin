@@ -1,4 +1,10 @@
 <div class="container-fluid dashboard" ng-if="homeLoaded">
-    <h3 ng-bind="vm.tableName">Todo Dashboard</h3>
+    <div class="action-bar container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <create-table></create-table>
+            </div>
+        </div>
+    </div>
     <table-dir></table-dir>
 </div>

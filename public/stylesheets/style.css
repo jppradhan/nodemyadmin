@@ -14,7 +14,7 @@ body {
     top: 51px;
     bottom: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 100;
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -36,7 +36,9 @@ body {
     max-height: calc(100% - 110px);
     overflow-y: auto;
 }
-
+.dashboard {
+    margin-top: 50px;
+}
 .dashboard .container-fluid {
     overflow-x: auto;
 }
@@ -54,4 +56,16 @@ body {
 }
 .h6, h6 {
     font-size: 0.8rem;
+}
+.action-bar {
+    position: fixed;
+    min-height: 40px;
+    top: 70px;
+    z-index: 1050;
+}
+.action-bar .btn {
+    font-size: 0.7rem;
+}
+.modal-backdrop {
+
 }
